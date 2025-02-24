@@ -12,7 +12,8 @@ models.Base.metadata.create_all(bind=engine)
 
 load_dotenv()
 
-app = FastAPI(title="Quotes API")
+
+app = FastAPI(root_path="/api")
 
 # CORS Configuration
 origins = os.getenv("ALLOWED_ORIGINS", "").split(",")
@@ -29,12 +30,7 @@ app.add_middleware(
 )
 
 # Include routers with prefix
-app.include_router(quotes.router, prefix="/api/quotes")
+app.include_router(quotes.router)
+app.include_router(quotes.router, prefix="/quotes", tags=["Quotes"])
 
-@app.get("/health")
-async def health_check():
-    return {"status": "healthy"}
 
-@app.get("/")
-async def root():
-    return {"message": "Quotes API is running"}
