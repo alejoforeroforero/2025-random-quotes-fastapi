@@ -7,8 +7,6 @@ services:
       - "8096:80"
     depends_on:
       - backend
-    environment:
-      - VITE_API_URL=${API_URL:-https://quotesfastapi.alejoforero.com/api}
   
 
   backend:
