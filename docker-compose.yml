@@ -6,15 +6,10 @@ services:
     ports:
       - "8096:80"
     depends_on:
-      backend:
-        condition: service_healthy
+      - backend
     environment:
       - VITE_API_URL=${API_URL:-https://quotesfastapi.alejoforero.com/api}
-    healthcheck:
-      test: ["CMD", "wget", "--spider", "-q", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+  
 
   backend:
     build:
@@ -26,8 +21,4 @@ services:
       - PORT=8000
       - NODE_ENV=${NODE_ENV:-production}
       - ALLOWED_ORIGINS=${ALLOWED_ORIGINS:-https://quotesfastapi.alejoforero.com}
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+ 
