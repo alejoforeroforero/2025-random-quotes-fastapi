@@ -1,14 +1,12 @@
 services:
-  frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+  vite-app:
+    build: .
     ports:
       - "8096:80"
-    depends_on:
-      - backend
-    environment:
-      - VITE_API_URL=https://quotes.alejoforero.com/api
+    volumes:
+      - ./dist:/usr/share/nginx/html/2025-quotesfastapi
+
+
 
 
 
