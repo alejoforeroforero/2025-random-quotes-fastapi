@@ -1,4 +1,9 @@
 services:
   frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8098:80"
     environment:
       - VITE_API_URL=${API_URL:-https://quotesfastapi.alejoforero.com/api}
