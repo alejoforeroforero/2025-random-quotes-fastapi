@@ -23,7 +23,7 @@ const initialState: QuotesState = {
 export const fetchRandomQuote = createAsyncThunk(
   'quotes/fetchRandom',
   async () => {
-    const response = await api.get<Quote>('/quotes/random');
+    const response = await api.get<Quote>('/quotes/random');  // removed /api prefix
     return response.data;
   }
 );
