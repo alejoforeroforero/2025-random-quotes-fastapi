@@ -1,6 +1,9 @@
+name: quotes-api  # Add this line at the top level
+
 services:
   vite-app:
     build: .
+    container_name: quotes-api-frontend-app
     ports:
       - "8096:80"
     volumes:
