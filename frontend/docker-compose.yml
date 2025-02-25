@@ -5,10 +5,4 @@ services:
       dockerfile: Dockerfile
     ports:
       - "8096:80"
-    environment:
-      - VITE_API_URL=https://quotesfastapi.alejoforero.com/api
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:80"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
+
